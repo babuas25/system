@@ -1,13 +1,6 @@
 'use client'
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-  useLayoutEffect,
-} from 'react'
+import { createContext, useContext, useState, useEffect, useCallback, useLayoutEffect } from 'react'
 
 import { getTheme, saveTheme } from '@/lib/firebase/theme'
 

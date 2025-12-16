@@ -2,7 +2,7 @@
 
 import { ChevronDown, ChevronRight, Trash2, RefreshCw } from 'lucide-react'
 import { useSession } from 'next-auth/react'
-import React, { useEffect, useMemo, useState, useRef } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 import { UserManagementPageSkeleton } from '@/components/ui/skeleton-loading'
@@ -615,7 +615,7 @@ export default function SuperAdminUserManagement() {
                   const isEditing = editingUser === user.uid
 
                   return (
-                    <React.Fragment key={user.uid ?? `${user.email}-${idx}`}>
+                    <div key={user.uid ?? `${user.email}-${idx}`}>
                       <tr className="border-t border-white/30 hover:bg-white/10 transition-colors">
                         <td className="px-2 py-3">
                           <button
@@ -942,7 +942,7 @@ export default function SuperAdminUserManagement() {
                           </td>
                         </tr>
                       )}
-                    </React.Fragment>
+                    </div>
                   )
                 })}
                 {filteredUsers.length === 0 && (

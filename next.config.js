@@ -1,18 +1,44 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    // Silence Rushstack patch warning on Vercel builds; lint locally instead
-    ignoreDuringBuilds: true,
-  },
+  // Note: 'standalone' output is for Firebase Functions
+  // Vercel doesn't need it - it handles Next.js natively
+  // output: 'standalone', // Commented out for Vercel deployment
+
+  // Next.js 16: Use Turbopack (default) or explicitly set webpack
+  // Setting empty turbopack config to use webpack for compatibility
+  turbopack: {},
+
   images: {
-    domains: [
-      'lh3.googleusercontent.com',
-      'platform-lookaside.fbsbx.com',
-      'images.unsplash.com',
-      'picsum.photos',
-      'tripfeels-theta.vercel.app',
-      'tripfeels.com',
-      'localhost',
+    // Next.js 16: Use remotePatterns instead of domains
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'platform-lookaside.fbsbx.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tripfeels-theta.vercel.app',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tripfeels.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
     ],
   },
   webpack: (config, { isServer }) => {
